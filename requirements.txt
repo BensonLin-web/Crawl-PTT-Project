@@ -1,4 +1,4 @@
-lxml==4.4.1
+lxml==4.6.5
 selenium==3.141.0
 PyMySQL==0.9.3
 redis==3.4.1
