@@ -1,14 +1,20 @@
 # Crawl-PTT-Project
-首先環境需要有MySQL、Selenium、Lxml、Redis這幾個庫，使用的版本在requirements.txt裡。
-使用Selenium+Chromedriver爬取頁面，循環遍歷每個分類看板的每一頁。
-如果遇到異常狀況以csv文件存儲。
-將符合日期的URL爬取下來，存進csv文件和redis的urls列表裡。
-當全部的urls爬取完畢後，使用socket開始監聽其他機器。
-Benson_PTT爬取.py文件為主機器的程序，負責爬取url。
-Benson_爬取網址端.py文件為其他多台機器的程序，負責將url請求過來後，開始爬取頁面資料，存進MySQL DB。
-完成分布式爬蟲。
+Search for PTT posts on a specific date, and then save the data into MySQL
+
+## A brief introduction to program content
+### crawl_page_url.py
+- Use Selenium and Chromedriver to crawl pages
+- Loop through each page of each category board
+- Encounter an abnormal situation, store it in a csv file
+- Fetch the URLs that match the date and store them in the csv file and the redis URL list
+- When all URLs are crawled, use the socket to start listening to other machines.
+
+### crawl_page_content.py
+- Request the url from master
+- Crawl page data and parse it
+- Save to MySQL DB
 
 
-
-
-
+## User Agent
+This is currently hard code, but it will be adjusted to use python's fake_useragent package in the future.</br>
+https://pypi.org/project/fake-useragent/
